@@ -14,16 +14,21 @@ workflow ispcr {
         } else {
             multiplex_args = '-n T'
         }
+
+        // tntblast args
+        tntblast_args = multiplex_args
+        tntblast_args = tntblast_args + ' -e ' + params.primer_min_tm
+        tntblast_args = tntblast_args + ' -E ' + params.probe_min_tm
+        tntblast_args = tntblast_args + ' -l '  + params.max_length
+        tntblast_args_ch = Channel.from( tntblast_args )
+
+        // print(tntblast_args)
         
         // run tntblast
-        tntblast(
-            combined_seq,
-            primers,
-            params.primer_min_tm,
-            params.probe_min_tm,
-            params.max_length,
-            multiplex_args
-        )
+        combined_seq
+            | combine(primers)
+            | combine(tntblast_args_ch)
+            | tntblast
 
     emit:
         output = tntblast.out.output
