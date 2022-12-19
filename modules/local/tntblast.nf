@@ -1,6 +1,6 @@
 process tntblast {
     tag "tntBlast search on ${fasta.simpleName}"
-    label "process_low"
+    label "process_medium"
     // publishDir "$params.outdir"+"/results/"+"$sample_id", mode: "copy"
 
     input:
@@ -15,6 +15,7 @@ process tntblast {
         tuple val(sample_id), file("*.txt"), emit: log
     shell:
         """
+        OMP_NUM_THREADS=${task.cpus}
         tntblast \
             -i ${primer} \
             -o ${sample_id}.out \
