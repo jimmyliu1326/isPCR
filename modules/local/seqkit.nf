@@ -31,6 +31,6 @@ process fq2fa {
         tuple val(sample_id), file("*.fasta")
     shell:
         """
-        seqkit fx2fq -j ${task.cpus} ${fastq} -o ${sample_id}.fasta
+        seqkit fq2fa -j ${task.cpus} ${fastq} -o ${sample_id}.fasta
         """
 }
