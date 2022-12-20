@@ -16,7 +16,7 @@ workflow preprocessing {
 
             combine_fq(data)
             // convert fq to fa
-            combined_seq = fq2fa(combined_fq.out)
+            combined_seq = fq2fa(combine_fq.out)
 
         }
 
