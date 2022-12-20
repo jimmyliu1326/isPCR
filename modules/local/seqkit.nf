@@ -28,7 +28,7 @@ process fq2fa {
     input:
         tuple val(sample_id), path(fastq)
     output:
-        tuple val(sample_id), file("*.fastq")
+        tuple val(sample_id), file("*.fasta")
     shell:
         """
         seqkit fx2fq -j ${task.cpus} ${fastq} -o ${sample_id}.fasta
