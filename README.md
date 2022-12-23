@@ -13,11 +13,8 @@ The isPCR pipeline wraps thermonucleotideBLAST in Nextflow framework to allow *i
  - Docker or Singularity
  - Git
 
-# Get the latest version of the pipeline
-ver=$(git ls-remote -t https://github.com/jimmyliu1326/isPCR.git | cut -f3 -d'/' | sort -r | head -n 1)
-
-# Install the latest version of SamnSero
-nextflow pull -hub github jimmyliu1326/SamnSero_Nextflow -r $ver
+# Pull the latest pipeline code from GitHub
+nextflow pull -hub github jimmyliu1326/isPCR
 ```
 
 ## Getting Started
