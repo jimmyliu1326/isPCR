@@ -19,7 +19,7 @@ process blast2fa {
 
         # append alignment coordinates to fasta header
         cat ${blast_out} | \
-        egrep "strand|range|>" | \
+        egrep "is contained in|amplicon range|>" | \
         sed 's/amplicon range = / /g' | \
         sed 's/.*strand (/(/g' | \
         sed 's/ .. /../g' | \
@@ -31,7 +31,7 @@ process blast2fa {
         # remove irrelevant lines and 
         # replace original fasta headers with coordinate appended headers
         cat ${blast_out} | \
-        grep -v "=" | \
+        grep -v " = " | \
         tr -d '#' | \
         grep -v 'primer' | \
         grep -v 'probe' | \
@@ -61,7 +61,7 @@ process blast2bed {
 
         # append alignment coordinates to fasta header
         cat ${blast_out} | \
-        egrep "strand|range|>" | \
+        egrep "is contained in|amplicon range|>" | \
         sed 's/amplicon range = / /g' | \
         sed 's/.*strand (/(/g' | \
         sed 's/ .. /../g' | \
