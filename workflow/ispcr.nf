@@ -10,7 +10,7 @@ workflow ispcr {
     main:
         // determine multiplex mode
         if (params.multiplex) {
-            multiplex_args = '--plex -n F'
+            multiplex_args = '--plex T -n F'
         } else {
             multiplex_args = '-n T'
         }
