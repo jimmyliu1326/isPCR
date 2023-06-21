@@ -64,7 +64,7 @@ process blast2bed {
         egrep "is contained in|amplicon range|>" | \
         sed 's/amplicon range = / /g' | \
         sed 's/.*strand (/(/g' | \
-        sed 's/ .. /../g' | \
+        sed 's/ \\.\\. /../g' | \
         xargs -n3 -d'\n' | \
         sed -E "s#(^.*>)(.*)#\\2\\1#" | \
         sed -E "s#(.* )(.*)#\\2\\1#" | \
