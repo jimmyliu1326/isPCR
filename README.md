@@ -14,7 +14,7 @@ The isPCR pipeline wraps thermonucleotideBLAST in Nextflow framework to allow *i
  - Git
 
 # Pull the latest pipeline code from GitHub
-nextflow pull -hub github jimmyliu1326/isPCR
+nextflow pull jimmyliu1326/isPCR
 ```
 
 ## Getting Started
@@ -66,7 +66,7 @@ TetR GATATAAAAAAACATTCTTA ATTGATCCTAAAACTGGACT
 
 ## Pipeline Usage
 
-The pipeline executes process in Docker containers by default. Singularity containers and management of pipeline processes by Slurm are also supported. See below for simple use cases demonstrating pipeline execution with different preconfigured profiles.
+The pipeline executes process in Docker containers by default. Singularity containers and management of pipeline processes by Slurm are also supported. See below for simple use cases demonstrating pipeline execution using different preconfigured profiles.
 
 **Docker (Default)**
 
@@ -80,7 +80,7 @@ nextflow run jimmyliu1326/isPCR -latest \
 **Singularity**
 
 ```bash
-nextflow run jimmyliu1326/isPCR -r [pipeline_version] \
+nextflow run jimmyliu1326/isPCR -latest \
     --input samples.csv \
     --primer primers.txt \
     --input_format fasta \
@@ -90,7 +90,7 @@ nextflow run jimmyliu1326/isPCR -r [pipeline_version] \
 **Singularity + Slurm**
 
 ```bash
-nextflow run jimmyliu1326/isPCR -r [pipeline_version] \
+nextflow run jimmyliu1326/isPCR -latest \
     --input samples.csv \
     --primer primers.txt \
     --input_format fasta \
