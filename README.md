@@ -66,23 +66,33 @@ TetR GATATAAAAAAACATTCTTA ATTGATCCTAAAACTGGACT
 
 ## Pipeline Usage
 
-The pipeline executes process in Docker containers by default. Usage of Singularity containers is also supported, but only configured for HPC environments that use Slurm scheduler. Note that a pipeline version must be specified when calling the pipeline.
+The pipeline executes process in Docker containers by default. Singularity containers and management of pipeline processes by Slurm are also supported. See below for simple use cases demonstrating pipeline execution with different preconfigured profiles.
 
-**With Docker (Default)**
+**Docker (Default)**
 
 ```bash
-nextflow run jimmyliu1326/isPCR -r [pipeline_version] \
+nextflow run jimmyliu1326/isPCR -latest \
     --input samples.csv \
     --primer primers.txt \
-    --input_format fastq
+    --input_format fasta
 ```
 
-**With Slurm HPC**
+**Singularity**
 
 ```bash
 nextflow run jimmyliu1326/isPCR -r [pipeline_version] \
     --input samples.csv \
     --primer primers.txt \
-    --input_format fastq \
-    -profile slurm
+    --input_format fasta \
+    -profile singularity
+```
+
+**Singularity + Slurm**
+
+```bash
+nextflow run jimmyliu1326/isPCR -r [pipeline_version] \
+    --input samples.csv \
+    --primer primers.txt \
+    --input_format fasta \
+    -profile singularity,slurm
 ```
