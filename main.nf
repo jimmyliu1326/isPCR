@@ -13,12 +13,13 @@ include { postprocessing } from './workflow/postprocessing.nf'
 
 // define main workflow
 workflow {
-    
+
     // read data
     samples_file = channel
         .fromPath(params.input, checkIfExists: true)
     data = samples_file
         .splitCsv(header: false)
+        .map { tuple(it[0], file(it[1])) }
     primers = channel
         .fromPath(params.primer, checkIfExists: true)
 
