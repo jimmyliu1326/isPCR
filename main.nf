@@ -19,7 +19,15 @@ workflow {
         .fromPath(params.input, checkIfExists: true)
     data = samples_file
         .splitCsv(header: false)
-        .map { tuple(it[0], file(it[1])) }
+        .map { id,path ->
+            
+            if ( workflow.profile.split(',').contains('test') ) {
+                tuple(id, file([workflow.projectDir, path].join('/')))
+            } else {
+                tuple(id, file(path))
+            }
+            
+        }
     primers = channel
         .fromPath(params.primer, checkIfExists: true)
 
