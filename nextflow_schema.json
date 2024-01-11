@@ -85,6 +85,10 @@
             "default": "",
             "fa_icon": "fas fa-cog",
             "properties": {
+                "account": {
+                    "type": "string",
+                    "default": null
+                },
                 "help": {
                     "type": "boolean",
                     "description": "Print pipeline help message"
