@@ -87,7 +87,8 @@
             "properties": {
                 "account": {
                     "type": "string",
-                    "default": null
+                    "default": "None",
+                    "description": "Slurm account name (required for -profile slurm)"
                 },
                 "help": {
                     "type": "boolean",
